@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#f5f0e6" name="theme-color"/><title>FINAL v11 · Medtecs Makati AI Workshop · 2 Oct 2026</title>
+<style>
+:root{--paper:#f5f0e6;--panel:#fffaf1;--card:#ede5d4;--ink:#282923;--muted:#69695f;--line:#dcd1bd;--blue:#195b83;--blue-soft:#e3edf1;--green:#447458;--green-soft:#e5eee4;--amber:#9b642c;--amber-soft:#fcf0d9;--nav:#eee6d7;--dark:#232b33;--light:#f4f5f4;--shadow:0 8px 28px rgba(40,34,25,.055)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.65 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input,textarea{font:inherit}a{color:var(--blue)}h1,h2,h3{line-height:1.15;letter-spacing:-.035em}h1{font-size:clamp(2.25rem,4vw,3.8rem);max-width:860px;margin:12px 0}h2{font-size:clamp(1.65rem,3vw,2.65rem);margin:0 0 12px}h3{font-size:1.22rem;margin:0 0 7px}.small{font-size:.89rem;color:var(--muted)}.eyebrow{font-size:.75rem;letter-spacing:.19em;text-transform:uppercase;font-weight:800;color:var(--blue)}
+.shell{max-width:1460px;padding:24px 24px 70px;margin:auto}.head{padding:36px 34px 29px;border:1px solid var(--line);background:linear-gradient(135deg,#f9f6ee 60%,#e3edf1);border-radius:24px;position:relative;overflow:hidden}.head:after{content:"";position:absolute;width:260px;height:260px;border:46px solid rgba(25,91,131,.06);border-radius:50%;right:-155px;top:-140px;pointer-events:none}.head .desc{font-size:1.18rem;color:var(--muted);max-width:820px;margin:0 0 18px}.toplinks{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}.toplinks a,.toplinks button{border:1px solid #b9cbd1;color:var(--blue);text-decoration:none;padding:7px 13px;border-radius:100px;background:#fffaf3;font-weight:650;font-size:.82rem;cursor:pointer}.notice{background:var(--amber-soft);border-left:4px solid #c28d45;padding:12px 16px;border-radius:7px;margin-top:20px;max-width:930px;font-size:.94rem}.progress-line{height:7px;background:#ddd7ca;border-radius:99px;overflow:hidden;margin-top:22px}.progress-line i{display:block;height:100%;width:0;background:var(--green);transition:width .25s}.progress-text{font-size:.82rem;color:var(--muted);margin-top:5px}
+.layout{display:grid;grid-template-columns:296px minmax(0,1fr);gap:25px;margin-top:24px}.sidebar{position:sticky;top:15px;align-self:start;max-height:calc(100vh - 30px);overflow:auto;background:var(--nav);border:1px solid var(--line);border-radius:18px;padding:16px}.sidebar-title{font-weight:800;font-size:.8rem;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;margin:5px 8px 13px}.phase-label{font-size:.69rem;color:var(--muted);font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin:17px 9px 6px}.nav-item{display:flex;align-items:center;gap:9px;padding:9px 10px;cursor:pointer;border:0;border-radius:9px;width:100%;text-align:left;background:transparent;color:var(--ink);line-height:1.3}.nav-item:hover{background:rgba(255,255,255,.55)}.nav-item.active{background:#fffaf1;box-shadow:inset 0 0 0 1px var(--line)}.nav-item .dot{flex:none;height:24px;width:24px;background:#ded7cb;border-radius:8px;display:grid;place-items:center;font-size:.73rem;font-weight:800;color:#706c65}.nav-item.active .dot{background:var(--blue);color:#fff}.nav-item.finished .dot{background:var(--green);color:#fff}.nav-item strong{font-size:.85rem;display:block}.nav-item em{font-size:.7rem;color:var(--muted);font-style:normal;display:block;margin-top:2px}.main{min-width:0}.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,4.2vw,49px);box-shadow:var(--shadow);min-height:610px}.panel[hidden]{display:none!important}.kicker{font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;font-weight:850;color:var(--blue);margin-bottom:15px;display:flex;gap:9px;align-items:center}.pill{font-size:.68rem;color:var(--blue);border:1px solid #b6ccd5;background:#e9f1f3;padding:4px 9px;border-radius:99px}.pill.try{background:var(--amber-soft);color:var(--amber);border-color:#eccb97}.pill.check{background:var(--green-soft);color:var(--green);border-color:#b5cdb8}.lead{font-size:1.1rem;color:var(--muted);max-width:820px;margin:0 0 26px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:18px 0}.cards.triple{grid-template-columns:repeat(3,minmax(0,1fr))}.card{border:1px solid var(--line);border-radius:13px;padding:20px;background:#fffcf7}.card .num{font-size:.76rem;color:var(--blue);letter-spacing:.1em;font-weight:850;margin-bottom:8px}.card p{margin:4px 0;color:var(--muted)}.callout{padding:17px 20px;background:var(--card);border-radius:12px;margin:18px 0}.callout.good{background:var(--green-soft);border-left:4px solid var(--green)}.callout.warn{background:var(--amber-soft);border-left:4px solid #c28d45}.callout b{color:var(--blue)}.callout.good b{color:var(--green)}.action{background:#fffbf4;border:1px dashed #c4a270;padding:16px 19px;border-radius:12px;margin:20px 0;font-weight:650}.action::before{content:"TRY IT  ·  ";color:var(--amber);font-size:.73rem;letter-spacing:.12em;font-weight:900}.prompt{background:var(--dark);border-radius:13px;overflow:hidden;margin:18px 0}.prompt-head{padding:10px 14px;border-bottom:1px solid #47515a;display:flex;justify-content:space-between;gap:10px;align-items:center;color:#d2dce3;font-size:.79rem}.copy{background:#dceef2;border:0;padding:6px 12px;border-radius:7px;color:#174a65;font-size:.77rem;font-weight:850;cursor:pointer}.copy:hover{background:#f7fcff}.prompt pre{font: .89rem/1.7 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;color:#f4f1e9;margin:0;padding:18px 20px}.bullets{padding-left:21px}.bullets li{margin:7px 0}.big-quote{font-size:clamp(1.35rem,2.5vw,2rem);font-weight:750;line-height:1.4;color:var(--blue);border-left:5px solid var(--blue);padding-left:19px;margin:27px 0}.flow{display:flex;align-items:stretch;gap:8px;margin:22px 0;flex-wrap:wrap}.flow .item{border:1px solid #b9ced8;background:#e5eff2;border-radius:11px;padding:15px 12px;text-align:center;flex:1;min-width:115px;font-weight:750;color:#174d69}.flow .arr{align-self:center;color:#8a9fa5;font-size:1.45rem}.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.stat{background:var(--blue-soft);padding:20px;border-radius:12px}.stat .v{font-size:1.8rem;font-weight:850;color:var(--blue)}.stat .l{font-size:.82rem;color:var(--muted)}table{border-collapse:collapse;width:100%;margin:18px 0;font-size:.87rem}th,td{border:1px solid var(--line);text-align:left;padding:10px 12px;vertical-align:top}th{background:#e8e0d1}.mini{overflow-x:auto}.mini table{min-width:590px}details{margin:13px 0;border:1px solid var(--line);border-radius:10px;background:#fffcf7;padding:12px 15px}summary{cursor:pointer;color:var(--blue);font-weight:800}.textarea{width:100%;border:1px solid #cfc6b7;border-radius:10px;min-height:135px;padding:13px;background:#fffdf9;resize:vertical}.tools{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}.btn{background:var(--blue);border:0;color:white;font-weight:800;border-radius:10px;padding:11px 17px;cursor:pointer}.btn.subtle{background:#e9e2d5;color:#4c4c43}.btn:disabled{opacity:.45;cursor:not-allowed}.footnav{display:flex;gap:10px;justify-content:space-between;border-top:1px solid var(--line);margin-top:35px;padding-top:20px}.complete{display:flex;gap:8px;align-items:center;cursor:pointer;font-size:.88rem;color:var(--green);font-weight:800}.complete input{width:17px;height:17px;accent-color:var(--green)}.footer{margin-top:24px;font-size:.75rem;color:var(--muted)}.mode-note{font-size:.77rem;color:var(--muted)}#status{position:fixed;bottom:20px;right:20px;background:#1c5b43;color:white;border-radius:10px;padding:11px 15px;font-size:.85rem;box-shadow:0 8px 25px #0002;display:none;z-index:5}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static;max-height:300px}.head{padding:26px}.panel{min-height:unset}.cards.triple{grid-template-columns:1fr 1fr}}@media(max-width:570px){.shell{padding:10px 10px 50px}.cards,.cards.triple,.statrow{grid-template-columns:1fr}.panel{padding:20px}.flow .arr{display:none}.toplinks{gap:5px}.head{border-radius:16px}.sidebar{max-height:245px}}@media print{.shell{max-width:none;padding:0}.head{background:white;break-after:page}.sidebar,.toplinks,.footnav,.complete,#status,.copy{display:none!important}.layout{display:block}.panel{display:block!important;min-height:0;box-shadow:none;border:0;border-radius:0;break-after:page;padding:25px 10px}.prompt{break-inside:avoid}.cards,.card,.callout{break-inside:avoid}}
+
+.start-actions{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin:22px 0 10px}.start-button{display:inline-flex;align-items:center;justify-content:center;background:#195b83;color:white!important;text-decoration:none;font-size:1.08rem;font-weight:800;padding:15px 23px;border-radius:13px;box-shadow:0 6px 13px rgba(25,91,131,.22)}.start-button:hover,.start-button:focus-visible{background:#104566}.outline-button{display:inline-flex;color:#195b83;text-decoration:none;background:white;border:1.5px solid #adc9d5;padding:13px 17px;border-radius:12px;font-weight:800}.start-hint{display:block;width:100%;color:#69695f;font-size:.87rem}@media(max-width:570px){.start-actions>a{width:100%;text-align:center}.start-button,.outline-button{justify-content:center}}@media print{.start-actions{display:none}}
+/* Participant-first presentation mode */
+.facilitator{display:none}body.instructor .facilitator{display:block}.panel:focus{outline:none}.toplinks #instructor-toggle{background:#e4edf4}
+@media print{.facilitator{display:none!important}}
+
+/* Layout refinement: text remains readable at laptop/projector and phone sizes. */
+body{line-height:1.48;overflow-wrap:break-word}
+h1,h2,h3{overflow-wrap:normal;word-break:normal}
+h2{font-size:clamp(1.8rem,2.55vw,2.4rem);line-height:1.15;letter-spacing:-.025em}
+h3{font-size:1.12rem;line-height:1.2}
+.panel{min-width:0;padding:clamp(20px,2.65vw,36px);min-height:0}
+.lead{font-size:clamp(1rem,1.25vw,1.12rem);line-height:1.42;margin-bottom:16px}
+.cards{gap:11px;margin:13px 0}
+.cards.triple{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{padding:13px 15px;min-width:0}
+.card h3{margin-bottom:5px}.card p{font-size:.94rem;line-height:1.4}
+.kicker{margin-bottom:10px}
+.callout,.action{padding:12px 15px;margin:13px 0;line-height:1.42}
+.prompt{margin:12px 0}
+.prompt pre{font-size:.86rem;line-height:1.47;padding:13px 15px;max-height:245px;overflow-y:auto;overflow-x:auto}
+.prompt-head{padding:7px 12px}
+.flow{margin:14px 0;gap:6px}.flow .item{padding:12px 8px;min-width:102px}
+.footnav{margin-top:17px;padding-top:13px;align-items:center}
+#step-1>.cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+#step-1>.cards .card{padding:12px}
+#step-1 .mini table{min-width:0;margin:10px 0;font-size:.91rem}
+#step-1 th,#step-1 td{padding:5px 10px;line-height:1.32}
+#step-7>.cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+#step-8>.cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+#step-21 h2{font-size:clamp(1.7rem,2.35vw,2.25rem)}
+/* Present mode removes the oversized welcome banner and keeps navigation visible. */
+.presentation-toolbar{display:none}
+body.presenting .head{display:none}
+body.presenting .shell{max-width:none;margin:0;padding:12px 16px}
+body.presenting .layout{grid-template-columns:228px minmax(0,1fr);gap:14px;margin:0}
+body.presenting .sidebar{top:0;max-height:calc(100dvh - 24px);padding:11px}
+body.presenting .phase-label{margin:11px 6px 4px}
+body.presenting .nav-item{padding:6px 7px;gap:7px}
+body.presenting .nav-item .dot{height:21px;width:21px}
+body.presenting .nav-item strong{font-size:.79rem}
+body.presenting .nav-item em{font-size:.66rem}
+body.presenting .panel{max-height:calc(100dvh - 24px);min-height:calc(100dvh - 24px);overflow-y:auto;overscroll-behavior:contain;padding:clamp(18px,2vw,29px) clamp(20px,2.4vw,35px) 16px;scrollbar-gutter:stable}
+body.presenting .panel .footnav{position:sticky;bottom:-16px;background:linear-gradient(0deg,var(--panel) 85%,rgba(255,250,241,.94));z-index:2;padding:12px 0 13px}
+body.presenting .presentation-toolbar{display:flex;position:fixed;z-index:10;right:32px;top:16px;gap:6px}
+body.presenting .presentation-toolbar button{border:1px solid #bed1d9;border-radius:9px;background:#fffaf1;color:var(--blue);font-size:.77rem;font-weight:800;padding:6px 9px;box-shadow:0 3px 12px #0001;cursor:pointer}
+body.presenting .kicker{padding-right:110px}
+body.presenting .footer{display:none}
+@media(max-width:1000px){
+ body.presenting .layout{grid-template-columns:180px minmax(0,1fr)}
+ body.presenting .panel{padding:18px}
+ #step-1>.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #step-7>.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:680px){
+ .shell{padding:10px 10px 40px}
+ .head{padding:22px 18px}
+ .panel{padding:20px 17px}
+ h1{font-size:clamp(2rem,9vw,3rem)}
+ h2{font-size:clamp(1.6rem,7vw,2rem)}
+ .cards.triple,.cards,#step-1>.cards,#step-7>.cards,#step-8>.cards{grid-template-columns:1fr 1fr}
+ .card{padding:12px}.card p{font-size:.9rem}
+ .footnav{flex-wrap:wrap}.complete{order:3;width:100%;justify-content:center}
+ .prompt pre{font-size:.8rem}
+ .mini table{min-width:0}
+ body.presenting .shell{padding:8px}
+ body.presenting .layout{display:block}
+ body.presenting .sidebar{display:none}
+ body.presenting .panel{max-height:calc(100dvh - 16px);min-height:calc(100dvh - 16px);padding:19px 15px}
+ body.presenting .presentation-toolbar{top:11px;right:23px}
+ body.presenting .kicker{padding-right:105px}
+ body.presenting .panel .footnav{bottom:-19px}
+}
+@media(max-width:420px){
+ .cards.triple,#step-1>.cards,#step-7>.cards,#step-8>.cards{grid-template-columns:1fr 1fr}
+ .card h3{font-size:1rem}
+ #step-1 th,#step-1 td{font-size:.82rem;padding:6px}
+}
+@media print{body.presenting .head{display:block}body.presenting .sidebar,body.presenting .presentation-toolbar{display:none!important}body.presenting .panel{display:block!important;max-height:none;min-height:0;overflow:visible;break-after:page}body.presenting .panel .footnav{display:none!important}}
+</style></head><body><div class="shell"><header class="head"><div class="eyebrow">MEDTECS GROUP · MAKATI AI WORKSHOP · 2 OCT 2026</div><h1>AI at Work<br/><span style="font-size:.62em;font-weight:600">Choose the right AI tool for the right task.</span></h1><p class="desc">Discover different AI tools through live demos. Start with Gemini to review a real contract email and its attachments, then move the same source material into Gemini Notebook and turn it into a visual executive summary for a manager. Next, use Gmail + AI to discover repetitive work patterns. After the break, learn why a shareable work tool needs more than a conversation: an interface, logic and stored data. Then meet Google Antigravity by individually building and sharing a working drink-ordering page before choosing one PH colleague’s automation opportunity and building a live example with the class.</p><div class="toplinks"><a href="https://chatgpt.com" rel="noopener" target="_blank">Open ChatGPT ↗</a><a href="https://gemini.google.com" rel="noopener" target="_blank">Open Gemini ↗</a><a href="https://antigravity.google/" rel="noopener" target="_blank">Open Antigravity ↗</a><a href="https://notebook.google.com" rel="noopener" target="_blank">Open Gemini Notebook ↗</a><button id="print-btn">Print / Save PDF</button><button aria-pressed="false" id="instructor-toggle" type="button">Instructor notes: Off</button></div><div class="notice"><b>Before we start:</b> Today is about choosing tools, not memorizing AI terminology. Use fictional or company-approved information only. AI can help you think, search, organize and build—but people still verify sources, facts and important decisions.</div><div class="progress-line"><i id="bar"></i></div><div class="progress-text" id="progress-text">0 of 23 steps completed</div><div class="start-actions"><a class="start-button" href="#step-1" id="start-slides" role="button">▶ Start presentation · Slide 1</a><a class="outline-button" href="#step-2" id="jump-demo">Go to live AI demo →</a><span class="start-hint">23 interactive slides · Use Next / Previous to move between slides</span></div><p class="mode-note">Select a step from the sidebar or use Previous / Next. Copy each prompt when you reach it. Instructor notes are hidden by default.</p></header>
+<noscript><p style="padding:12px 18px;background:#fff0d3;border-radius:9px;margin-top:16px">This interactive presentation requires JavaScript. Open the downloaded index.html in Safari, Chrome or Edge, or use Print / Save PDF in a supported browser.</p></noscript><div class="layout"><nav aria-label="Workshop steps" class="sidebar"><div class="sidebar-title">Workshop guide</div><div id="nav"></div></nav><main class="main" id="main"><section class="panel" data-phase="START HERE" data-short="Our three-hour plan" data-tag="LEARN" data-time="5 min" data-title="Different jobs, different AI tools" id="step-1"><div class="kicker"><span>STEP 01</span><span class="pill">LEARN</span><span>5 min</span></div><h2>Different jobs. Different AI tools.</h2><p class="lead">Today: watch AI form our groups, use Gemini to review a real contract example, then move the same sources into Gemini Notebook and turn the important points into a visual summary for a manager. Next, use Gmail + AI to discover repetitive work. After the break, we move from conversation to building: Interface → Logic → Database, then use Google Antigravity to individually build and share a working drink-ordering page. Finally, I will choose one automation opportunity from a PH colleague and build it live with the class.</p><div class="cards triple">
+<div class="card"><h3>ChatGPT / Gemini</h3><p>Form teams · review a contract thread</p></div><div class="card"><h3>Gemini Notebook</h3><p>Turn the same sources into a manager-ready visual</p></div>
+<div class="card"><h3>Gmail + AI</h3><p>Find repetitive work patterns</p></div>
+<div class="card"><h3>Google Antigravity</h3><p>Build, test and share a working drink-ordering page</p></div></div><div class="mini"><table class="agenda-table"><thead><tr><th>Time</th><th>Workshop</th></tr></thead><tbody>
+
+
+
+
+
+
+
+
+
+
+
+<tr><td>9:00–9:05</td><td>Welcome · Which AI tool for which task?</td></tr><tr><td>9:05–9:20</td><td>AI helps form teams + check the result</td></tr><tr><td>9:20–9:40</td><td>Gemini · Philippine Army BDU Contract Review</td></tr><tr><td>9:40–10:00</td><td>Gemini Notebook · Turn the Review into a Visual for a Manager</td></tr><tr><td>10:00–10:30</td><td>Gmail + AI · Find Repetitive Work</td></tr><tr><td>10:30–10:40</td><td>☕ Break</td></tr><tr><td>10:40–11:10</td><td>Google Antigravity · 🥤 Build &amp; Share a Drink-Ordering Page</td></tr><tr><td>11:10–11:35</td><td>Live Demo · Build One PH Colleague’s Automation Workflow</td></tr><tr><td>11:35–11:50</td><td>Group Project + Oct. 7 Briefing</td></tr><tr><td>11:50–12:00</td><td>Wrap-up + Q&amp;A</td></tr></tbody></table>
+<div class="callout" style="margin-top:14px"><b>October 7 · Final Day</b><br><span style="color:#000"><b>10:00 AM</b> · Legal Training<br><b>10:30 AM–12:00 PM</b> · Workflow Review &amp; Improvement<br><b>2:00 PM</b> · Final Group Presentations</span></div></div><div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="AI HELPS FORM TEAMS + CHECK THE RESULT" data-short="Start with what you want" data-tag="LEARN" data-time="1 min" data-title="Start with what you want" hidden="" id="step-2"><div class="kicker"><span>STEP 02</span><span class="pill">LEARN</span><span>1 min</span></div>
+<h2>Start by telling AI what you want.</h2>
+<p class="lead">You do not need to know the perfect prompt. Start with the real problem in normal language.</p>
+<div class="prompt"><div class="prompt-head"><span>MESSAGE 1 · Start naturally</span><button class="copy" type="button">Copy prompt</button></div><pre>I'm organizing an AI workshop for our employees. I need to divide them into groups for their final presentations, but I have never done this with AI. Can you help me?</pre></div>
+<div class="action">Run this in Gemini or ChatGPT. Let the class see that AI can start helping even when your first request is simple.</div>
+<details class="facilitator"><summary>Presenter notes</summary><p>In the real test, Gemini first suggested general grouping strategies. That is fine—the lesson is that you can begin with a normal request rather than a perfect prompt.</p></details><div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="AI HELPS FORM TEAMS + CHECK THE RESULT" data-short="Let AI ask what it needs" data-tag="LEARN" data-time="2 min" data-title="Let AI ask what it needs" hidden="" id="step-3"><div class="kicker"><span>STEP 03</span><span class="pill">LEARN</span><span>2 min</span></div>
+<h2>Not sure what AI needs? Ask it.</h2>
+<p class="lead">You do not have to guess every detail. Tell AI what information you already have and ask it to guide you one question at a time.</p>
+<div class="prompt"><div class="prompt-head"><span>MESSAGE 2 · Let AI clarify</span><button class="copy" type="button">Copy prompt</button></div><pre>I have a spreadsheet containing our pre-workshop survey responses, but I'm not sure what information you need. Please ask me questions one at a time so we can work this out together.</pre></div>
+<div class="flow"><div class="item">Tell AI the goal</div><span class="arr">→</span><div class="item">Let AI ask</div><span class="arr">→</span><div class="item">Give the missing information</div></div>
+<div class="callout good"><b>Beginner shortcut:</b> “I know what I want to achieve, but I’m not sure what information you need. Ask me.”</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="AI HELPS FORM TEAMS + CHECK THE RESULT" data-short="Upload the survey + give the rules" data-tag="WATCH" data-time="3 min" data-title="Give AI the real source and rules" hidden="" id="step-4"><div class="kicker"><span>STEP 04</span><span class="pill">WATCH</span><span>3 min</span></div>
+<h2>Now give AI the real source and the rules.</h2>
+<p class="lead">Upload the survey, explain the one test response to exclude, and tell AI what a usable team looks like. The prompt below is designed to produce teams you can actually use for the final project.</p>
+<div class="prompt"><div class="prompt-head"><span>MESSAGE 3 · Upload survey + form the teams</span><button class="copy" type="button">Copy prompt</button></div><pre>I have uploaded our pre-workshop survey responses. Please use ONLY this spreadsheet to form the teams for our final group project.
+
+Important data rule:
+- The FIRST survey response was a test submitted by Ever. Exclude that first test response from all counts and grouping.
+- Keep every other valid participant.
+- Do not invent missing information.
+
+Before grouping:
+1. Count the total survey responses.
+2. Show which one response you excluded as the test.
+3. State the final valid participant count.
+
+Then form practical teams:
+- Aim for 5–6 people per team and do not create a team larger than 6 unless you ask me first.
+- PRIMARY factor: group people with compatible/shared work problems, use cases or project interests so they can build one final project together.
+- SECONDARY factors: department/work function and AI experience. Where practical, avoid putting all experienced AI users in one team.
+- Use only fields that actually exist in the survey.
+
+Output:
+A. Validation summary: total responses, excluded test response, valid participant count.
+B. Final team table: Team | Members | Department/Function | Shared work problem / possible project direction.
+C. Audit: team sizes, total people assigned, duplicates, omissions.
+
+IMPORTANT: The total number of people assigned across all teams MUST equal the valid participant count, and every valid participant must appear exactly once. If your audit does not match, fix the grouping BEFORE showing me the final answer.</pre></div>
+<div class="action">Upload the spreadsheet, paste this prompt, and run it. Do not announce the teams yet—first inspect the validation and audit.</div>
+<details class="facilitator"><summary>Presenter notes</summary><p>Use the real survey but avoid projecting unnecessary personal information such as email addresses. The shared work problem is the primary grouping factor because each team needs one project to work on together.</p></details><div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="AI HELPS FORM TEAMS + CHECK THE RESULT" data-short="Inspect the proposed teams" data-tag="WATCH" data-time="3 min" data-title="Inspect the proposed teams" hidden="" id="step-5"><div class="kicker"><span>STEP 05</span><span class="pill">WATCH</span><span>3 min</span></div>
+<h2>The answer can look good and still be wrong.</h2>
+<p class="lead">Read the validation first, then the team table, then the audit. Do not judge the result only by how polished it looks.</p>
+<div class="cards triple"><div class="card"><div class="num">1 · COUNT</div><h3>Valid participants</h3><p>Does the number match the spreadsheet after excluding only the first test response?</p></div><div class="card"><div class="num">2 · TEAMS</div><h3>Practical sizes</h3><p>Are teams around 5–6 people, with no oversized group?</p></div><div class="card"><div class="num">3 · PURPOSE</div><h3>Can they work together?</h3><p>Do members have a compatible work problem or project direction?</p></div></div>
+<div class="callout warn"><b>What happened in our Gemini test:</b> the answer stated 36 valid participants, but the proposed teams contained 45 names in total, and one team had 12 people. The formatting looked professional, but the math did not match.</div>
+<div class="action">Ask the class: “Would you use these teams immediately?” Then count before accepting the result.</div><div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="AI HELPS FORM TEAMS + CHECK THE RESULT" data-short="Check the result" data-tag="CHECK" data-time="2 min" data-title="Check before you trust it" hidden="" id="step-6"><div class="kicker"><span>STEP 06</span><span class="pill check">CHECK</span><span>2 min</span></div>
+<h2>Check before you trust it.</h2>
+<p class="lead">A professional-looking AI answer is still a draft. Verify the numbers and the source before you use it.</p>
+<div class="flow"><div class="item">Valid count</div><span class="arr">=</span><div class="item">Sum of team sizes</div><span class="arr">=</span><div class="item">Unique people assigned</div></div>
+<div class="cards triple"><div class="card"><h3>No omissions</h3><p>Every valid participant is included.</p></div><div class="card"><h3>No duplicates</h3><p>Each person appears exactly once.</p></div><div class="card"><h3>Usable groups</h3><p>Team sizes and shared project direction make sense.</p></div></div>
+<div class="callout good"><b>Simple rule:</b> If those three numbers do not match, the grouping is not finished.</div><div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="AI HELPS FORM TEAMS + CHECK THE RESULT" data-short="Make AI audit and repair" data-tag="CHECK" data-time="3 min" data-title="Audit, repair and finalize" hidden="" id="step-7"><div class="kicker"><span>STEP 07</span><span class="pill check">CHECK</span><span>3 min</span></div>
+<h2>If something is wrong, ask AI to audit and repair it.</h2>
+<p class="lead">Do not manually start over. Tell AI exactly what to verify, then require a corrected final table.</p>
+<div class="prompt"><div class="prompt-head"><span>MESSAGE 4 · Audit + repair</span><button class="copy" type="button">Copy prompt</button></div><pre>Before I use these teams, audit your answer against the uploaded spreadsheet.
+
+Please verify all of the following:
+1. Ever's FIRST test response is excluded and no other valid participant is excluded.
+2. Recalculate the valid participant count directly from the spreadsheet.
+3. Count the members in every proposed team and show the total assigned.
+4. Check that every valid participant appears exactly once.
+5. Identify any duplicate or missing participant.
+6. Confirm that no team has more than 6 people.
+7. Confirm that each team has a reasonable shared work problem / project direction based on the survey.
+
+If ANY check fails, rebuild the teams and run the audit again before giving me the final answer.
+
+Return ONLY:
+- Valid participant count
+- Corrected final team table: Team | Members | Department/Function | Shared work problem / project direction
+- Team sizes
+- Final audit: total assigned, duplicates, omissions
+
+Do not say the audit passed unless the valid count, total assigned and unique participants all match.</pre></div>
+<div class="action">Run the audit. Compare the corrected result with the spreadsheet. Once the numbers match and the groups are practical, announce the teams.</div>
+<div class="callout warn">AI can help repair its own output, but your final verification is still against the original survey.</div><div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="AI HELPS FORM TEAMS + CHECK THE RESULT" data-short="The beginner workflow" data-tag="LEARN" data-time="1 min" data-title="The beginner workflow" hidden="" id="step-8"><div class="kicker"><span>STEP 08</span><span class="pill">LEARN</span><span>1 min</span></div>
+<h2>This is the AI workflow I want you to remember.</h2>
+<p class="lead">You did not need to become a prompt engineer. You explained what you wanted, let AI clarify, gave it the source, checked the result and improved it.</p>
+<div class="flow"><div class="item">ASK</div><span class="arr">→</span><div class="item">CLARIFY</div><span class="arr">→</span><div class="item">GIVE INFO</div><span class="arr">→</span><div class="item">TRY</div><span class="arr">→</span><div class="item">CHECK</div><span class="arr">→</span><div class="item">IMPROVE</div></div>
+<div class="callout good"><b>If you get stuck:</b> “Here is what I’m trying to do. I’m not sure what information you need. Ask me questions before you start.”</div><div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="GEMINI · PHILIPPINE ARMY BDU CONTRACT REVIEW" data-short="Find the email + understand the bidding" data-tag="WATCH" data-time="8 min" data-title="Find the contract thread and understand the bidding" hidden="" id="step-9"><div class="kicker"><span>STEP 09</span><span class="pill">WATCH</span><span>8 min</span></div>
+<h2>Start with the real request: “Please assist.”</h2>
+<p class="lead">Start in Gemini. Search for the correct work email/thread, confirm the attachments, then ask Gemini to explain the bidding structure from the source material before you ask about penalties or clauses.</p>
+<div class="callout"><b>Email to find:</b> <span style="font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">URGENT FOR REVIEW: Philippine Army BDU Contract Agreement</span><br/><span style="color:var(--muted)">The thread may appear with a prefix such as “Fwd:” or “Re:”. Search the distinctive subject words rather than relying on the prefix.</span></div>
+<div class="prompt"><div class="prompt-head"><span>MESSAGE 1 · Find the source</span><button class="copy" type="button">Copy prompt</button></div><pre>Search my work Gmail for the email thread with the subject containing:
+“URGENT FOR REVIEW: Philippine Army BDU Contract Agreement”
+
+Do not modify, send, archive or label anything.
+
+Show me:
+1. The matching email thread
+2. The attachments available in the thread
+3. A short description of what each attachment appears to be
+
+Do not analyze the legal terms yet. First help me confirm that we found the correct source.</pre></div>
+<div class="action">Open the matching thread and confirm the source documents before asking AI to interpret the contract.</div>
+<div class="prompt"><div class="prompt-head"><span>MESSAGE 2 · What is this bidding?</span><button class="copy" type="button">Copy prompt</button></div><pre>Using only this email thread and its attachments, explain this Philippine Army BDU bidding to me in simple terms.
+
+Please show:
+- Procuring entity
+- Project / bidding reference
+- What is being procured
+- Lot structure and quantities
+- Approved budget for each lot, if stated
+- Which attachment supports each important point
+
+If a detail is not stated in the email or attachments, write “not found in the provided sources.” Do not fill gaps from general knowledge.</pre></div>
+<div class="callout good"><b>Teaching point:</b> Start with the real work question, give AI access to the source, then ask it to explain the information in a structure you can check.</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="GEMINI · PHILIPPINE ARMY BDU CONTRACT REVIEW" data-short="Find the penalty + exact clause" data-tag="CHECK" data-time="12 min" data-title="Find the penalty, document and clause" hidden="" id="step-10"><div class="kicker"><span>STEP 10</span><span class="pill check">CHECK</span><span>12 min</span></div>
+<h2>Don’t stop at “there is a penalty.” Find the source.</h2>
+<p class="lead">Now ask the question that matters for review: what is the penalty, what triggers it, and exactly where is it written?</p>
+<div class="prompt"><div class="prompt-head"><span>MESSAGE 3 · Find penalty terms</span><button class="copy" type="button">Copy prompt</button></div><pre>Using only the email thread and attached documents, identify the penalty, liquidated damages, default, termination, performance security, inspection failure or other consequence provisions that may apply to this project.
+
+For EACH finding, show:
+- Document / contract name
+- Party or relationship it applies to
+- Trigger
+- Penalty / consequence
+- Rate, cap or amount, if expressly stated
+- Exact clause / section
+- Page number in the source, if identifiable
+- Short source wording or source reference supporting the finding
+
+Separate the findings into:
+A. Main Philippine Army contract / bidding documents
+B. Upstream fabric procurement agreement, if included
+C. Garment manufacturing subcontract, if included
+
+Important rules:
+- Do not rely on general Philippine procurement rules unless they are actually contained in or clearly incorporated by the provided documents.
+- Do not invent a clause number, page number, rate, cap, remedy or legal consequence.
+- If you cannot locate an exact source, write “not located in the provided documents.”</pre></div>
+<div class="cards triple"><div class="card"><h3>1 · WHAT?</h3><p>What penalty or consequence did AI identify?</p></div><div class="card"><h3>2 · WHERE?</h3><p>Which contract, clause, section and page supports it?</p></div><div class="card"><h3>3 · CHECK</h3><p>Open the attachment and verify the wording yourself.</p></div></div>
+<div class="prompt"><div class="prompt-head"><span>MESSAGE 4 · Audit the answer before I rely on it</span><button class="copy" type="button">Copy prompt</button></div><pre>Now audit your answer against the source documents.
+
+Make a table:
+Finding | Document | Clause / section | Page | Directly supported by source? | What I should verify manually
+
+Flag anything that came from general legal knowledge rather than the provided documents.
+If you previously gave a clause, page, rate, cap or consequence that you cannot now verify in the attachments, clearly correct it.</pre></div>
+<div class="callout warn"><b>Key lesson:</b> AI can help you locate and organize contract risks, but a confident answer is not the same as a verified clause. For legal review, always open the cited source and check the actual wording.</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="GEMINI NOTEBOOK · VISUALIZE FOR A MANAGER" data-short="Same sources · different output" data-tag="WATCH" data-time="7 min" data-title="Gemini Notebook · from source review to visual" hidden="" id="step-11"><div class="kicker"><span>STEP 11</span><span class="pill">WATCH</span><span>7 min</span></div>
+<h2>Same information. Different audience. Different output.</h2>
+<p class="lead">Gemini helped us investigate the BDU contract. But a manager or decision-maker may not need to read our full AI conversation. Move the approved source documents into Gemini Notebook and turn the important points into something he can understand quickly.</p>
+<div class="flow"><div class="item">SOURCE DOCUMENTS</div><span class="arr">→</span><div class="item">GEMINI REVIEW</div><span class="arr">→</span><div class="item">GEMINI NOTEBOOK</div><span class="arr">→</span><div class="item">VISUAL SUMMARY</div><span class="arr">→</span><div class="item">MANAGER</div></div>
+<div class="cards triple"><div class="card"><h3>Conversation</h3><p>Useful when you are investigating, asking follow-up questions and checking details.</p></div><div class="card"><h3>Source-grounded notebook</h3><p>Useful when the output should stay anchored to a defined set of documents.</p></div><div class="card"><h3>Visual communication</h3><p>Useful when a manager needs the key points quickly instead of the full working conversation.</p></div></div>
+<div class="callout good"><b>Teaching point:</b> AI is not only for answering questions. The same source material can be transformed for the person who needs to receive the result.</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section>
+<section class="panel" data-phase="GEMINI NOTEBOOK · VISUALIZE FOR A MANAGER" data-short="Create a one-page visual for a manager" data-tag="WATCH" data-time="13 min" data-title="Create a manager-ready infographic" hidden="" id="step-12"><div class="kicker"><span>STEP 12</span><span class="pill">WATCH</span><span>13 min</span></div>
+<h2>If I present this to a manager, what do they actually need to know?</h2>
+<p class="lead">Add the approved Philippine Army BDU source documents to Gemini Notebook. In Studio, generate an Infographic (or a concise report) that turns the detailed review into a fast executive view.</p>
+<div class="prompt"><div class="prompt-head"><span>INFOGRAPHIC CUSTOMIZATION PROMPT</span><button class="copy" type="button">Copy prompt</button></div><pre>Create a professional one-page executive infographic for a manager or decision-maker reviewing this Philippine Army BDU contract matter.
+
+Use only the uploaded source documents.
+
+Focus on the information they need to understand quickly:
+- What the project / bidding is
+- The relevant lot, quantity and contract / budget figures stated in the sources
+- Key delivery or performance obligations
+- Penalty / liquidated damages / inspection / termination / performance-security issues that are expressly supported by the sources
+- The most important risks, open questions or items that require management attention
+
+Keep it concise and easy to scan in about 2 minutes.
+Use a professional business style and clear hierarchy.
+Do not add legal conclusions, amounts, clause numbers or facts that are not supported by the uploaded sources.
+If an important point is unclear or conflicting in the sources, label it as “Needs verification” rather than guessing.</pre></div>
+<div class="cards triple"><div class="card"><h3>1 · Generate</h3><p>Use Gemini Notebook Studio → Infographic. A concise report is another option if the visual becomes too dense.</p></div><div class="card"><h3>2 · Check</h3><p>Compare the important numbers, clauses and risks against the source documents.</p></div><div class="card"><h3>3 · Present</h3><p>Ask: could a manager understand the issue and know what needs attention without reading the whole thread?</p></div></div>
+<div class="callout warn"><b>Important:</b> A beautiful infographic can still contain an error. Visual presentation does not replace source verification.</div>
+<div class="action"><b>Live demo:</b> Generate the visual, open it full screen, then point out 2–3 items and show how you would verify them before presenting it to a manager or decision-maker.</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="GMAIL + AI · FIND REPETITIVE WORK" data-short="Presenter example · find repeated work" data-tag="WATCH" data-time="8 min" data-title="Example · let AI find repetitive work" hidden="" id="step-13">
+<div class="kicker"><span>STEP 13</span><span class="pill">WATCH</span><span>8 min</span></div>
+<h2>First, watch one example.</h2>
+<p class="lead">We are not asking AI to automate anything yet. First, use Gemini to look across your own work and identify repeated patterns that may be worth improving.</p>
+<div class="prompt"><div class="prompt-head"><span>PROMPT 1 · FIND MY WORKFLOWS</span><button class="copy" type="button">Copy prompt</button></div><pre>Review my work Gmail from the last 30 days and help me identify repetitive work that I personally do that could potentially be assisted or automated with AI.
+
+GMAIL IS READ-ONLY.
+Do not send, draft, reply to, forward, delete, archive, label, move, or modify anything.
+
+Base your findings only on recurring patterns you can actually observe in my emails.
+
+Look for patterns such as:
+- similar emails I repeatedly draft or reply to
+- information I repeatedly collect, organize, or summarize
+- recurring follow-ups or reminders
+- document, quotation, proposal, or version comparisons
+- recurring status updates or reports
+- information I repeatedly copy between emails, documents, spreadsheets, or systems
+- approval, review, confirmation, or sign-off processes
+- recurring requests where I gather information from several people
+- recurring processes that follow similar steps each time
+
+Identify 3–5 real workflow opportunities.
+
+For each workflow, show:
+1. Recurring task
+2. What triggers it
+3. What I currently do
+4. What AI could help with
+5. What still needs human review
+
+Only identify work that appears to be performed by me.
+Do not invent tasks, frequency, responsibilities, or workflows.
+Do not reproduce confidential email content, names, contract details, financial figures, personal information, passwords, credentials, or full email text unnecessarily.
+Summarize the workflow pattern rather than the confidential content.
+
+Finally, recommend ONE workflow that would be practical to improve first.
+Prefer something that is repetitive, useful, clearly supported by my Gmail, small enough to test, and realistic to improve with AI or automation.
+Explain briefly why you selected it.</pre></div>
+<div class="action"><b>Presenter:</b> Run one example first. Point out that the useful output is not “use AI more”—it is a specific repeated process with a trigger, steps, an AI opportunity and a human check.</div>
+<div class="callout good"><b>What we are looking for:</b> real repeated work that could become a small, testable workflow—not a one-time task and not just “draft an email.”</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section>
+<section class="panel" data-phase="GMAIL + AI · FIND REPETITIVE WORK" data-short="Your turn · find + submit workflows" data-tag="TRY" data-time="22 min" data-title="Your turn · find and submit your workflows" hidden="" id="step-14">
+<div class="kicker"><span>STEP 14</span><span class="pill">TRY</span><span>22 min</span></div>
+<h2>Your turn: find your workflows, then submit the result.</h2>
+<p class="lead">Run Prompt 1 in Gemini first. Check the 3–5 workflows it finds. Then use Prompt 2 in the same conversation to turn those results into a submission block for our workshop collection.</p>
+<div class="prompt"><div class="prompt-head"><span>PROMPT 2 · PREPARE MY SUBMISSION</span><button class="copy" type="button">Copy prompt</button></div><pre>Use the workflow analysis you just completed in this conversation.
+
+Do NOT review my Gmail again.
+Do NOT create new workflows.
+Use only the 3–5 workflows already identified in your previous response.
+
+First ask me for:
+1. My name
+2. My department
+
+Wait for my answer, then create a submission block using exactly this JSON structure:
+
+{
+  "name": "Participant Name",
+  "department": "Department",
+  "workflows": [
+    {
+      "workflowNumber": 1,
+      "recurringTask": "Short description",
+      "trigger": "Short description",
+      "currentProcess": "Short description",
+      "aiHelp": "Short description",
+      "humanReview": "Short description",
+      "recommended": false,
+      "whyFirst": ""
+    }
+  ]
+}
+
+Include all 3–5 workflows from your previous analysis.
+
+Mark exactly ONE workflow as:
+"recommended": true
+
+Use the workflow you previously recommended.
+All other workflows must use:
+"recommended": false
+
+Only the recommended workflow should contain a short explanation in "whyFirst".
+
+Keep every value concise.
+Do not include email participant names, confidential email content, passwords, credentials, personal information, sensitive contract details, or unnecessary financial information.
+
+IMPORTANT:
+Return valid JSON only.
+Do not put the JSON inside a markdown code block.
+Do not add any explanation before or after it.</pre></div>
+<div class="flow"><div class="item">1 · GEMINI</div><span class="arr">→</span><div class="item">Find 3–5 workflows</div><span class="arr">→</span><div class="item">2 · PREPARE</div><span class="arr">→</span><div class="item">Copy submission block</div><span class="arr">→</span><div class="item">3 · SUBMIT</div></div>
+<div class="cards triple"><div class="card"><h3>1 · Check</h3><p>Do the workflows actually describe work you repeatedly do?</p></div><div class="card"><h3>2 · Copy</h3><p>Run Prompt 2 and copy the complete submission block Gemini creates.</p></div><div class="card"><h3>3 · Submit</h3><p>Open the Workshop Workflow Collection page, paste once, and click <b>Submit My Workflows</b>.</p></div></div>
+<div class="callout warn"><b>If Gmail access is not available:</b> use only a company-approved connection, or paste approved/anonymized work examples. Do not invent results.</div>
+<div class="action"><b>Before the break:</b> Submit your workflows to the Workshop Workflow Collection page. During the break, Irene will review the recommended workflows and choose one PH colleague’s example for the live demo later.</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="BREAK" data-short="10:30–10:40 · Break" data-tag="BREAK" data-time="10 min" data-title="Break · 10:30–10:40" hidden="" id="step-15"><div class="kicker"><span>STEP 15</span><span class="pill">BREAK</span><span>10 min</span></div><h2>Break · 10:30–10:40</h2><p class="lead">Take 10 minutes. Make sure your workflow submission is complete. Irene will review the recommended workflows during the break. Please come back at 10:40—next, we move beyond conversation and introduce Google Antigravity. You will learn Interface → Logic → Database, then each person will build and share a working drink-ordering page.</p><div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="GOOGLE ANTIGRAVITY · BUILD + SHARE" data-short="Why move beyond conversation?" data-tag="LEARN + BUILD" data-time="5 min" data-title="From conversation to a working tool" hidden="" id="step-16"><div class="kicker"><span>STEP 16</span><span class="pill">LEARN + BUILD</span><span>5 min</span></div>
+<h2>What if another person needs to USE what you built?</h2>
+<p class="lead">A conversation is excellent for thinking, reviewing and drafting. But when a third party needs to open a link, enter information and have that information saved for later, you are now building a working tool. That usually means thinking about Interface → Logic → Database.</p>
+<div class="cards triple"><div class="card"><h3>1 · Interface</h3><p>What another person sees and uses: fields, buttons and the page itself.</p></div><div class="card"><h3>2 · Logic</h3><p>What happens after an action: validate, submit, calculate, route or respond.</p></div><div class="card"><h3>3 · Database</h3><p>Where information is stored so it still exists after the conversation or browser session ends.</p></div></div>
+<div class="callout"><b>Our simple example:</b> instead of asking everyone to message me their drink order, I want to send them one page. They choose a drink → submit → the order is stored → I can see everyone's orders.</div>
+<div class="callout good"><b>Meet Google Antigravity:</b> an agentic development environment that can work with files, code and terminal tools to help turn a described workflow into a working application.</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section>
+<section class="panel" data-phase="GOOGLE ANTIGRAVITY · BUILD + SHARE" data-short="Build your drink-ordering page" data-tag="INDIVIDUAL BUILD" data-time="20 min" data-title="Antigravity · build the drink page" hidden="" id="step-17"><div class="kicker"><span>STEP 17</span><span class="pill">INDIVIDUAL BUILD</span><span>20 min</span></div>
+<h2>Describe what you need. Let Antigravity build the first version.</h2>
+<p class="lead">You do not need to start by writing code. Start the same way we started with Gemini: explain the result you want. Antigravity can then work inside the project, create the files, run the app and help you iterate.</p>
+<div class="prompt"><div class="prompt-head"><span>ANTIGRAVITY STARTER MESSAGE</span><button class="copy" type="button">Copy prompt</button></div><pre>I want to build a simple mobile-friendly drink-ordering webpage that I can share with other people.
+
+Each person should be able to choose:
+- Name
+- Drink
+- Size
+- Sweetness / sugar level
+- Ice level
+- Toppings
+
+The page needs:
+- A clear Submit Order button
+- A confirmation after submission
+- A persistent shared order list / database so I can see who ordered what later
+- No notes field
+- No login
+- No payment
+- A simple organizer view of submitted orders
+
+Please build the first working version, run it, and show me the preview.
+
+If you need me to choose a database, deployment method, credential or other important setup, explain the options simply and ask me before making an assumption.
+
+After the first version works, help me create a shareable link that another person can open and test.</pre></div>
+<div class="flow"><div class="item">DESCRIBE</div><span class="arr">→</span><div class="item">BUILD</div><span class="arr">→</span><div class="item">RUN</div><span class="arr">→</span><div class="item">PREVIEW</div><span class="arr">→</span><div class="item">CHANGE</div><span class="arr">→</span><div class="item">SHARE + TEST</div></div>
+<div class="action"><b>Individual task:</b> Get the complete order flow working before polishing the design. The important proof is not that the page looks nice—it is that another person can submit an order and you can retrieve the saved result.</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section>
+<section class="panel" data-phase="GOOGLE ANTIGRAVITY · BUILD + SHARE" data-short="Share it with another person" data-tag="TEST" data-time="5 min" data-title="Share + test the drink page" hidden="" id="step-18"><div class="kicker"><span>STEP 18</span><span class="pill">TEST</span><span>5 min</span></div>
+<h2>The real test: can someone else use it?</h2>
+<p class="lead">Pair with the person next to you. Share your page link. They place one order without you operating the page for them. Then check whether their order was actually saved.</p>
+<div class="cards triple"><div class="card"><h3>Interface works?</h3><p>Can another person understand the page and submit an order?</p></div><div class="card"><h3>Database works?</h3><p>Does the submitted order appear correctly in your organizer view or stored data?</p></div><div class="card"><h3>Share works?</h3><p>Can the other person open the link from their own browser/device?</p></div></div>
+<div class="callout good"><b>Takeaway:</b> Conversation helped us think. Gemini Notebook helped us communicate. Antigravity helps us turn a workflow into something another person can actually use.</div>
+<div class="action"><b>Fix one thing:</b> If your partner finds a problem, describe it to Antigravity and ask it to repair the issue. Then test again.</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="LIVE AUTOMATION DEMO · PH COLLEAGUE WORKFLOW" data-short="Choose one PH colleague workflow" data-tag="LIVE DEMO" data-time="5 min" data-title="Choose one PH colleague workflow for the live demo" hidden="" id="step-19">
+<div class="kicker"><span>STEP 19</span><span class="pill">LIVE DEMO</span><span>5 min</span></div>
+<h2>The drink page was practice. Now let’s automate one real PH workflow.</h2>
+<p class="lead">Open the Gmail workflow results from before the break. I will choose one clear, manageable automation opportunity from a PH colleague and use it for a live build/demo with the class.</p>
+<div class="cards triple"><div class="card"><h3>Repeated?</h3><p>Does this actually happen again and again?</p></div><div class="card"><h3>Useful?</h3><p>Would improving it save time or reduce manual work?</p></div><div class="card"><h3>Safe to test?</h3><p>Can you test with human review and non-sensitive sample data?</p></div></div>
+<div class="action"><b>Live-demo selection:</b> Ask for a PH colleague volunteer and choose one workflow that is repetitive, understandable and safe to demonstrate. Keep the scope small enough to build or prototype live.</div>
+<div class="callout"><b>Good live examples:</b> recurring status updates, repeated information collection, routine comparison, recurring follow-up preparation, or repetitive report drafting. Avoid high-risk payment, personnel or approval decisions.</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="LIVE AUTOMATION DEMO · PH COLLEAGUE WORKFLOW" data-short="Build one colleague workflow live" data-tag="WATCH + BUILD" data-time="20 min" data-title="Live demo · turn one real workflow into an automation" hidden="" id="step-20">
+<div class="kicker"><span>STEP 20</span><span class="pill">WATCH + BUILD</span><span>20 min</span></div>
+<h2>Let's turn one PH colleague's workflow into a live automation demo.</h2>
+<p class="lead">Take the workflow we just selected from a PH colleague. First make the current process visible, then decide what the automation actually needs and build or prototype one small improvement live.</p>
+<div class="prompt"><div class="prompt-head"><span>LIVE WORKFLOW MAPPING · Copy prompt</span><button class="copy" type="button">Copy prompt</button></div><pre>I want to improve this recurring work task:
+
+[PASTE THE SELECTED WORKFLOW]
+
+Help me map the current workflow before we automate anything.
+
+Show:
+Trigger → Input → Current steps → Rules / decisions → Output → Human check
+
+Ask me questions if an important step or business rule is missing. Do not invent missing rules.
+
+After the current workflow is clear, suggest ONE small AI-supported improvement and which tool would fit it. Keep important approvals, sending, payments, personnel decisions and other consequential actions under human review.</pre></div>
+<div class="flow"><div class="item">Real task</div><span class="arr">→</span><div class="item">Map current flow</div><span class="arr">→</span><div class="item">Choose what to automate</div><span class="arr">→</span><div class="item">Build live</div><span class="arr">→</span><div class="item">Test + human check</div></div>
+<div class="cards triple"><div class="card"><h3>Need a source-grounded visual?</h3><p>Maybe Gemini Notebook.</p></div><div class="card"><h3>Need a shareable working tool?</h3><p>Maybe Antigravity or another agentic build environment.</p></div><div class="card"><h3>Need to analyze / draft / organize?</h3><p>Maybe ChatGPT or Gemini.</p></div></div>
+<div class="action"><b>Live build:</b> Once the workflow is clear, build or prototype the smallest useful version in front of the class. If it needs an interface, logic or stored data, continue in Antigravity. If it only needs analysis, drafting or source-grounded communication, use the tool that fits the task.</div><div class="callout good"><b>Key lesson:</b> The drink page taught the building pattern. Now apply it to real work: understand → build something small → test → improve.</div>
+<div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="GROUP PROJECT + OCT. 7 BRIEFING" data-short="Real-work group project" data-tag="TEAM TASK" data-time="10 min" data-title="Group assignment · build your own workflow" hidden="" id="step-21"><div class="kicker"><span>STEP 21</span><span class="pill">TEAM TASK</span><span>10 min</span></div><h2>Group project: improve one real work workflow.</h2><p class="lead">After today’s workshop, your team chooses one recurring real-work problem—ideally one discovered from the Gmail exercise or a shared pattern across the team. Do not reuse the drink page as the final project. Build a small AI-supported improvement, test it with safe sample data, and prepare to show it on October 7 at 2:00 PM.</p><div class="cards triple"><div class="card"><div class="num">01</div><h3>Choose</h3><p>One recurring problem from the Gmail findings or a shared team pattern.</p></div><div class="card"><div class="num">02</div><h3>Map</h3><p>How does it work today?</p></div><div class="card"><div class="num">03</div><h3>Choose tool(s)</h3><p>Which tool fits?</p></div><div class="card"><div class="num">04</div><h3>Build</h3><p>Build a small working version.</p></div><div class="card"><div class="num">05</div><h3>Test</h3><p>Test with safe sample data.</p></div><div class="card"><div class="num">06</div><h3>Improve</h3><p>Fix at least one issue you discover.</p></div></div><div class="callout warn"><b>Not every project needs Antigravity.</b> Use a build environment when the problem really needs a working interface, logic, integrations or stored data. Otherwise a conversation or source-grounded notebook may be enough. Keep consequential actions under human control.</div><div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="GROUP PROJECT + OCT. 7 BRIEFING" data-short="Oct 7 · final presentation" data-tag="SHARE" data-time="5 min" data-title="October 7 · 2:00 PM" hidden="" id="step-22"><div class="kicker"><span>STEP 22</span><span class="pill">SHARE</span><span>5 min</span></div><h2>Show us what you built.</h2><p class="lead">FINAL GROUP PRESENTATIONS · OCTOBER 7, 2:00 PM. Show the problem, the old workflow, your new workflow, a working demo, what you tested or fixed, and where human review is still required.</p><div class="cards triple"><div class="card"><h3>Problem</h3><p>What did you choose?</p></div><div class="card"><h3>Before</h3><p>How is it done today?</p></div><div class="card"><h3>New flow</h3><p>Where does AI help?</p></div><div class="card"><h3>Demo</h3><p>Show it working.</p></div><div class="card"><h3>Test + improve</h3><p>What did you fix?</p></div><div class="card"><h3>Human check</h3><p>What needs human review?</p></div></div><div class="callout good"><b>October 7 · 2:00 PM:</b> Show evidence. Be clear about limitations. A small working solution is better than a big untested idea.</div><div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section><section class="panel" data-phase="WRAP-UP" data-short="Wrap-up + Q&amp;A" data-tag="LEARN" data-time="10 min" data-title="Wrap-up + Q&amp;A" hidden="" id="step-23"><div class="kicker"><span>STEP 23</span><span class="pill">LEARN</span><span>10 min</span></div><h2>What I want you to remember.</h2><div class="cards triple"><div class="card"><div class="num">01</div><h3>Start with the problem</h3><p>Do not start by choosing a tool.</p></div><div class="card"><div class="num">02</div><h3>Different tools do different things</h3><p>Choose the tool that fits the task.</p></div><div class="card"><div class="num">03</div><h3>You don't need a perfect prompt</h3><p>Explain what you need and improve through conversation.</p></div><div class="card"><div class="num">04</div><h3>Build → test → improve</h3><p>The first result is a starting point.</p></div><div class="card"><div class="num">05</div><h3>You are responsible for the result</h3><p>Check sources, facts and important decisions.</p></div></div><div class="callout good"><b>Workshop story: </b>Gemini reviews the real problem → Gemini Notebook turns the same sources into a manager-ready visual → Gmail + AI finds repetitive work → Antigravity turns a simple workflow into a shareable tool → choose one PH colleague workflow and build a real automation example live.</div><div class="footnav"><button class="btn subtle prev" type="button">← Previous</button><label class="complete"><input class="done" type="checkbox"/> Mark this step complete</label><button class="btn next" type="button">Next →</button></div></section></main></div><div class="footer">Medtecs Group · Makati AI Workshop · FINAL v18 · Training exercise data only · Use approved information · AI tools require online access.</div></div><div aria-label="Presentation controls" class="presentation-toolbar"><button id="exit-present" title="Return to the handout" type="button">Exit presentation</button></div><div aria-live="polite" id="status">Copied!</div>
+<script>
+const sampleFiles={
+ invitation:{name:'01_Sample_Tender_Invitation.txt',text:`FICTIONAL TRAINING EXERCISE — NOT A REAL TENDER
+Tender: 2026 Sample Protective Equipment Purchase
+Invitation date: 1 October 2026
+Submission deadline: 15 October 2026, 5:00 PM Philippine time
+Submission channel: sample-tenders@example.invalid
+Requested item: 3-ply surgical masks, 300,000 pieces
+Delivery destination: Sample Manila Distribution Center
+Queries to: sample-tenders@example.invalid by 8 October 2026
+Evaluation factors: technical compliance, delivery proposal and total quoted cost.
+These fictional terms are for the workshop only.`},
+ spec:{name:'02_Sample_Technical_Requirements.txt',text:`FICTIONAL TRAINING EXERCISE — NOT A REAL SPECIFICATION
+Item: 3-ply surgical mask with earloops
+Order quantity: 300,000 pieces
+Packaging: 50 pieces per inner box
+Label each outer carton with item description, quantity and batch/lot reference.
+Each submission must include a product datasheet.
+Delivery proposal must state lead time after purchase order.
+No factory inspection date is stated in this document.`},
+ checklist:{name:'03_Sample_Submission_Checklist.txt',text:`FICTIONAL TRAINING EXERCISE — NOT A REAL SUBMISSION POLICY
+Submit all items by the invitation deadline:
+1. Signed quotation with unit price, currency and Incoterm.
+2. Product datasheet for the proposed mask.
+3. Delivery schedule and lead time.
+4. Description of packaging and labeling.
+5. Primary contact person and email.
+This file does not assign responsible internal departments.
+No factory inspection date is specified.`}
+};
+const panels=[...document.querySelectorAll('.panel')];let current=0;const KEY='medtecs-makati-v9-progress';let done={};try{done=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+const nav=document.getElementById('nav'),bar=document.getElementById('bar'),progressText=document.getElementById('progress-text');let lastPhase='';
+const esc=s=>{const el=document.createElement('span');el.textContent=s;return el.innerHTML};
+panels.forEach((p,i)=>{const phase=p.dataset.phase;if(phase!==lastPhase){const label=document.createElement('div');label.className='phase-label';label.textContent=phase;nav.append(label);lastPhase=phase;}const b=document.createElement('button');b.type='button';b.className='nav-item';b.innerHTML=`<span class="dot">${i+1}</span><span><strong>${esc(p.dataset.title)}</strong><em>${esc(p.dataset.short)}</em></span>`;b.addEventListener('click',()=>show(i));nav.append(b);p.querySelector('.prev').onclick=()=>show(i-1);p.querySelector('.next').onclick=()=>show(i+1);const c=p.querySelector('.done');c.checked=!!done[i];c.onchange=()=>{done[i]=c.checked;try{localStorage.setItem(KEY,JSON.stringify(done))}catch(e){};update()}});
+function update(){const n=Object.values(done).filter(Boolean).length;bar.style.width=(100*n/panels.length)+'%';progressText.textContent=`${n} of ${panels.length} steps completed`;[...nav.querySelectorAll('.nav-item')].forEach((b,i)=>{b.classList.toggle('active',i===current);b.classList.toggle('finished',!!done[i]);b.querySelector('.dot').textContent=done[i]?'✓':String(i+1)})}
+function show(i,scroll=true){current=Math.max(0,Math.min(i,panels.length-1));panels.forEach((p,k)=>p.hidden=k!==current);panels[current].querySelector('.prev').disabled=current===0;panels[current].querySelector('.next').disabled=current===panels.length-1;panels[current].querySelector('.next').textContent=current===panels.length-1?'You’re done ✓':'Next →';update();panels[current].scrollTop=0;if(scroll&&!document.body.classList.contains('presenting'))window.scrollTo({top:document.querySelector('.layout').getBoundingClientRect().top+window.scrollY-12,behavior:'smooth'})}
+document.getElementById('start-slides').addEventListener('click',e=>{e.preventDefault();show(0);});
+document.getElementById('jump-demo').addEventListener('click',e=>{e.preventDefault();show(1);});
+function toast(m){const s=document.getElementById('status');s.textContent=m;s.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>s.style.display='none',2000)}
+document.querySelectorAll('.copy').forEach(b=>b.onclick=async()=>{const t=b.closest('.prompt').querySelector('pre').innerText;try{await navigator.clipboard.writeText(t);toast('Prompt copied')}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();toast(ok?'Prompt copied':'Select and copy the prompt manually')}});
+document.querySelectorAll('.download-sample').forEach(b=>b.onclick=()=>{const file=sampleFiles[b.dataset.file],blob=new Blob([file.text],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=file.name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500)});document.getElementById('print-btn').onclick=()=>window.print();document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))return;if(e.key==='ArrowRight'&&e.altKey)show(current+1);if(e.key==='ArrowLeft'&&e.altKey)show(current-1)});show(0,false);
+
+const instructorToggle=document.getElementById('instructor-toggle');
+instructorToggle.addEventListener('click',()=>{const on=document.body.classList.toggle('instructor');instructorToggle.textContent='Instructor notes: '+(on?'On':'Off');instructorToggle.setAttribute('aria-pressed',String(on));});
+
+
+// Focused presentation mode: large, readable slides; dense reference text scrolls inside its slide.
+const exitPresent=document.getElementById('exit-present');
+function enterPresentation(){document.body.classList.add('presenting');show(0,false);window.scrollTo(0,0);}
+function leavePresentation(){document.body.classList.remove('presenting');window.scrollTo({top:document.querySelector('.layout').offsetTop-12,behavior:'instant'});}
+exitPresent.addEventListener('click',leavePresentation);
+document.getElementById('start-slides').addEventListener('click',()=>{enterPresentation();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('presenting'))leavePresentation();});
+
+document.getElementById("jump-demo").addEventListener("click",()=>{enterPresentation();show(1,false);});
+</script></body></html>
